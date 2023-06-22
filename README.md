@@ -163,5 +163,5 @@ export default App;
 ![employee](https://github.com/SarankumarJ/Employee-Onboarding-Application/assets/94778101/19d53cde-a5ca-4233-ab6a-bc7ee087a454)
 
 
-Result:
+## Result:
 Thus we have successfully created a Hospital application using SpringBoot and SQL.
