@@ -1,6 +1,6 @@
 ## Ex-24 Create an empolyee onboarding application using,SpringBoot and SQL
 ## Aim:
-To create a Hospital application using SpringBoot and SQL.
+To create an employee onboarding application using SpringBoot and SQL.
 
 ## Algorithm:
 ### Step 1:- 
@@ -22,9 +22,9 @@ Create Components.
 Connect the database with the SpringBoot.
 
 ## Program:
-Hospital.java
+Employee.java
 ```java
-package com.hospital.hosman.hos;
+package com.Employee.employee.emp;
 
 import jakarta.persistence.*;
 import org.junit.platform.commons.annotation.Testable;
@@ -35,92 +35,91 @@ import java.time.Period;
 
 @Entity
 @Table
-public class Hosman {
+public class Employee {
     @Id
     @SequenceGenerator(
-            name = "hosman_sequence",
-            sequenceName = "hosman_sequence",
+            name = "employee_sequence",
+            sequenceName = "employee_sequence",
             allocationSize = 1
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "hosman_sequence"
+            generator = "employee_sequence"
     )
-    private Long PatId;
-    private String PatName;
+    private Long empId;
+    private String empName;
     @Transient
-    private Integer PatAge;
-    private LocalDate PatDob;
-    private String PatEmail;
+    private Integer empAge;
+    private LocalDate empDob;
+    private String empEmail;
 
-    public Hosman() {
+    public Employee() {
     }
 
-    public Hosman(Long patId, String patName, LocalDate patDob, String patEmail) {
-        this.PatId = patId;
-        this.PatName = patName;
-        this.PatDob = patDob;
-        this.PatEmail = patEmail;
+    public Employee(Long empId, String empName, LocalDate empDob, String empEmail) {
+        this.empId = empId;
+        this.empName = empName;
+        this.empDob = empDob;
+        this.empEmail = empEmail;
     }
 
-    public Long getPatId() {
-        return PatId;
+    public Long getempId() {
+        return empId;
     }
 
-    public void setPatId(Long patId) {
-        PatId = patId;
+    public void setempId(Long empId) {
+        empId = empId;
     }
 
-    public String getPatName() {
-        return PatName;
+    public String getempName() {
+        return empName;
     }
 
-    public void setPatName(String patName) {
-        PatName = patName;
+    public void setempName(String empName) {
+        empName = empName;
     }
 
-    public Integer getPatAge() {
-        return Period.between(PatDob,LocalDate.now()).getYears();
+    public Integer getempAge() {
+        return Period.between(empDob,LocalDate.now()).getYears();
     }
 
-    public void setPatAge(Integer patAge) {
-        PatAge = patAge;
+    public void setempAge(Integer empAge) {
+        empAge = empAge;
     }
 
-    public LocalDate getPatDob() {
-        return PatDob;
+    public LocalDate getempDob() {
+        return empDob;
     }
 
-    public void setPatDob(LocalDate patDob) {
-        PatDob = patDob;
+    public void setempDob(LocalDate empDob) {
+        empDob = empDob;
     }
 
-    public String getPatEmail() {
-        return PatEmail;
+    public String getempEmail() {
+        return empEmail;
     }
 
-    public void setPatEmail(String patEmail) {
-        PatEmail = patEmail;
+    public void setempEmail(String empEmail) {
+        empEmail = empEmail;
     }
 
     @Override
     public String toString() {
-        return "Hosman{" +
-                "PatId=" + PatId +
-                ", PatName='" + PatName + '\'' +
-                ", PatAge=" + PatAge +
-                ", PatDob=" + PatDob +
-                ", PatEmail='" + PatEmail + '\'' +
+        return "Employee{" +
+                "empId=" + empId +
+                ", empName='" + empName + '\'' +
+                ", empAge=" + empAge +
+                ", empDob=" + empDob +
+                ", empEmail='" + empEmail + '\'' +
                 '}';
     }
 }
 ```
-
 applications.properties
 ```java
 spring.datasource.url=jdbc:postgresql://localhost:5432/hosman_db
 spring.datasource.username=postgres
-spring.datasource.password=saiabi@123
+spring.datasource.password=sk@123
 spring.jpa.hibernate.ddl-auto=create-drop
 spring.jpa.show-sql=true
 spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
@@ -131,10 +130,10 @@ App.js
 import React from "react"
 import './App.css';
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
-import ecomComponent from './components/hosComponent/hosComponent';
+import EmployeeRegistrationComponent from './components/EmployeeRegistrationComponent/EmployeeRegistrationComponent';
 import HeaderComponent from "./components/HeaderComponent/HeaderComponent";
-import hosComponent from "./components/hosComponent/hosComponent";
-import hosComponent from "./components/hosComponent/hosComponent";
+import EmployeeDirectoryComponent from "./components/EmployeeDirectoryComponent/EmployeeDirectoryComponent";
+import EmployeeDeletionComponent from "./components/EmployeeDeletionComponent/EmployeeDeletionComponent";
 
 function App() {
   return (
@@ -144,13 +143,13 @@ function App() {
               
             <nav className="nav-menu">
                 <Link to="/" >Home</Link>
-                <Link to="/admin/add" >Add Member</Link>
-                <Link to="/admin/delete" >Delete Member</Link>
+                <Link to="/admin/add" >Add Employee</Link>
+                <Link to="/admin/delete" >Delete Employee</Link>
             </nav>
            <Routes>
-                 <Route exact path='/' element={<ecomComponent/>}></Route>
-                 <Route path='/admin/add' element={<ecomComponent/>}></Route>
-                 <Route path='/admin/delete' element={<ecomComponent/>}></Route>
+                 <Route exact path='/' element={<EmployeeDirectoryComponent/>}></Route>
+                 <Route path='/admin/add' element={<EmployeeRegistrationComponent/>}></Route>
+                 <Route path='/admin/delete' element={<EmployeeDeletionComponent/>}></Route>
           </Routes>
           </div>
        </Router>
@@ -160,8 +159,9 @@ function App() {
 export default App;
 ```
 ## Output:
-![employee](https://github.com/SarankumarJ/Employee-Onboarding-Application/assets/94778101/19d53cde-a5ca-4233-ab6a-bc7ee087a454)
+![emp](https://github.com/SarankumarJ/Employee-Onboarding-Application/assets/94778101/5d2523bc-a320-4455-9c10-127a4c81efa3)
+
 
 
 ## Result:
-Thus we have successfully created a Hospital application using SpringBoot and SQL.
+Thus we have successfully created an employee onboarding application using SpringBoot and SQL.
